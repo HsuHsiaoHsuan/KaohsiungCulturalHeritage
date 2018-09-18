@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.drawee.view.SimpleDraweeView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sdv_image"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    fresco:viewAspectRatio="1.33"
+    tools:context=".detail.PhotoFragment"/>
