@@ -20,12 +20,12 @@
     android:paddingBottom="18dp"
     android:paddingEnd="16dp"
     android:paddingStart="16dp"
-    android:paddingTop="18dp">
+    android:paddingTop="18dp"
+    tools:context=".detail.DetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context="funnybrain.kaohsiungculturalheritage.detail.DetailActivity">
+        android:layout_height="wrap_content">
 
         <com.tmall.ultraviewpager.UltraViewPager
             android:id="@+id/uvp_pager"

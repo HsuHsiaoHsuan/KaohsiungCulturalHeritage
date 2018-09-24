@@ -20,7 +20,7 @@ import funnybrain.kaohsiungculturalheritage.main.MainFragment.OnListFragmentInte
 import kotlinx.android.synthetic.main.list_item_main.view.*
 
 class DataItemRecyclerViewAdapter(
-        private val mValues: List<DataItem>,
+        private val mValues: MutableList<DataItem>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<DataItemRecyclerViewAdapter.ViewHolder>() {
 

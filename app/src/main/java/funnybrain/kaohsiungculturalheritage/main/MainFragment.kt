@@ -13,21 +13,20 @@ import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
 import funnybrain.kaohsiungculturalheritage.main.adapter.DataItemRecyclerViewAdapter
 
-import funnybrain.kaohsiungculturalheritage.main.dummy.DummyContent
-import funnybrain.kaohsiungculturalheritage.main.dummy.DummyContent.DummyItem
-
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [MainFragment.OnListFragmentInteractionListener] interface.
- */
 class MainFragment : Fragment(), MainContract.View {
 
-    private var dataList: List<DataItem> = ArrayList()
+    private var dataList = mutableListOf<DataItem>()
+//    private var dataList: List<DataItem> = ArrayList()
+
+    lateinit var recyclerView: RecyclerView
+    private var listener: OnListFragmentInteractionListener? = null
+    lateinit var adapter: DataItemRecyclerViewAdapter
 
     override fun getDataOk(data: List<DataItem>) {
-        dataList = data
-        recyclerView.adapter = DataItemRecyclerViewAdapter(dataList, listener)
+        dataList.clear()
+        dataList.addAll(data)
+//        recyclerView.adapter =
+        recyclerView.adapter?.notifyDataSetChanged()
 
         Log.e("FREEMAN", "getDataOk")
         data.forEach {
@@ -44,14 +43,20 @@ class MainFragment : Fragment(), MainContract.View {
         mPresenter = presenter
     }
 
-    private var listener: OnListFragmentInteractionListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnListFragmentInteractionListener) {
+            listener = context
+            mPresenter.getData()
+        } else {
+            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
+        }
     }
 
-    lateinit var recyclerView: RecyclerView
-    lateinit var adapter: DataItemRecyclerViewAdapter
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//
+//    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -63,14 +68,9 @@ class MainFragment : Fragment(), MainContract.View {
         return view
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-            mPresenter.getData()
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        recyclerView.adapter = DataItemRecyclerViewAdapter(dataList, listener)
     }
 
     override fun onDetach() {
