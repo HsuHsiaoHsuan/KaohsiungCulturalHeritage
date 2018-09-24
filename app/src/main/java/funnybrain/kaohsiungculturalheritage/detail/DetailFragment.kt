@@ -1,13 +1,12 @@
 package funnybrain.kaohsiungculturalheritage.detail
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.util.TypedValue
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.updateLayoutParams
 import com.tmall.ultraviewpager.UltraViewPager
 
 import funnybrain.kaohsiungculturalheritage.R
@@ -41,12 +40,12 @@ class DetailFragment : Fragment() {
         photoAdapter = PhotoAdapter(fragmentManager, photoData)
 
         uvp_pager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
-        uvp_pager.adapter = photoAdapter
+//        uvp_pager.adapter = photoAdapter
 
         val point = Utils.getWindowScreen(activity!!)
-        uvp_pager.updateLayoutParams {
-            height = (point.x * (3.0f / 4.0f)).toInt()
-        }
+        val params = uvp_pager.layoutParams
+        params.height = (point.x * (3.0f / 4.0f)).toInt()
+        uvp_pager.layoutParams = params
         uvp_pager.initIndicator()
         uvp_pager.indicator
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)

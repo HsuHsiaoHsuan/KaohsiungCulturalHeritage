@@ -2,8 +2,8 @@ package funnybrain.kaohsiungculturalheritage.data.model;
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 data class DataItem (
     @SerializedName("Heritage_INDEX")
@@ -24,7 +24,7 @@ data class DataItem (
 
     @SerializedName("Heritage_Image")
     @Expose
-    val image: List<String> = ArrayList()) : Parcelable {
+    val image: MutableList<String> = ArrayList()) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),

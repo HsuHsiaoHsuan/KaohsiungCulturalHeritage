@@ -7,7 +7,6 @@ import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
 import funnybrain.kaohsiungculturalheritage.data.source.DataRepository
 import funnybrain.kaohsiungculturalheritage.detail.DetailActivity
-import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListener {
@@ -20,9 +19,10 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 //        mainUi = SingleFrameLayoutUi()
 //        mainUi.setContentView(this)
-        SingleFrameLayoutUi().setContentView(this)
+//        SingleFrameLayoutUi().setContentView(this)
 
         val f: MainFragment = MainFragment.newInstance()
         f.setPresenter(MainPresenter(DataRepository.getInstance(), f))

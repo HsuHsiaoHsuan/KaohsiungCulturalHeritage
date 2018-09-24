@@ -2,13 +2,13 @@ package funnybrain.kaohsiungculturalheritage.main
 
 import android.content.Context
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
 import funnybrain.kaohsiungculturalheritage.main.adapter.DataItemRecyclerViewAdapter
@@ -20,12 +20,11 @@ class MainFragment : Fragment(), MainContract.View {
 
     lateinit var recyclerView: RecyclerView
     private var listener: OnListFragmentInteractionListener? = null
-    lateinit var adapter: DataItemRecyclerViewAdapter
+//    lateinit var adapter: DataItemRecyclerViewAdapter
 
     override fun getDataOk(data: List<DataItem>) {
         dataList.clear()
         dataList.addAll(data)
-//        recyclerView.adapter =
         recyclerView.adapter?.notifyDataSetChanged()
 
         Log.e("FREEMAN", "getDataOk")
