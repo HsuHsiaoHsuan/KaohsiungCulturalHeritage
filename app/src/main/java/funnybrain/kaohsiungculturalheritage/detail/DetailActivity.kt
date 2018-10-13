@@ -13,6 +13,7 @@ class DetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SingleFrameLayoutUi().setContentView(this)
+//        setContentView(R.layout.framelayout)
 
         val data = intent.getParcelableExtra<DataItem>(DetailFragment.ARG_DATA)
 
@@ -22,5 +23,7 @@ class DetailActivity : BaseActivity() {
                 fragment = f,
                 frameId = R.id.main_view,
                 tag = "DetailFragment")
+
+
     }
 }

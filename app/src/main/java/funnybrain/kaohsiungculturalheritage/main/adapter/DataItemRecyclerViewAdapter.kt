@@ -67,7 +67,7 @@ class DataItemRecyclerViewAdapter(
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mTvTitle: TextView = mView.tv_title
-        val mTvType: TextView = mView.tv_type
+        val mTvType: TextView = mView.c_type
         val mImage: SimpleDraweeView = mView.iv_photo
 
         override fun toString(): String {

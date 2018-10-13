@@ -37,6 +37,10 @@ class DetailFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        activity!!.title = data!!.title
+
+        c_type.text = data!!.type
+
         photoData = data!!.image
         photoAdapter = PhotoAdapter(fragmentManager, photoData)
 
@@ -56,6 +60,12 @@ class DetailFragment : Fragment() {
                 .setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4.0f, resources.displayMetrics).toInt())
                 .setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
                 .build()
+
+        tv_title.text = data!!.title
+        tv_intro.text = data!!.desc!!.replace("\r\n", "\r\n\r\n")
+
+        tv_memo.text = data!!.memo
+
     }
 
     companion object {

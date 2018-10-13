@@ -23,6 +23,7 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
 //        mainUi = SingleFrameLayoutUi()
 //        mainUi.setContentView(this)
         SingleFrameLayoutUi().setContentView(this)
+//        setContentView(R.layout.framelayout)
 
         val f: MainFragment = MainFragment.newInstance()
         f.setPresenter(MainPresenter(DataRepository.getInstance(), f))
