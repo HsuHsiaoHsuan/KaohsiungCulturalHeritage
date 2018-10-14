@@ -55,17 +55,16 @@ class DetailFragment : Fragment() {
         uvp_pager.indicator
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
                 .setFocusColor(resources.getColor(R.color.colorPrimary))
-                .setNormalColor(resources.getColor(R.color.colorAccent))
+                .setNormalColor(resources.getColor(R.color.warm_grey))
                 .setMargin(0, 0, 0, 35)
                 .setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4.0f, resources.displayMetrics).toInt())
                 .setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
                 .build()
 
         tv_title.text = data!!.title
-        tv_intro.text = data!!.desc!!.replace("\r\n", "\r\n\r\n")
+        tv_intro.text = data!!.memo!!.replace("\r\n", "\r\n\r\n")
 
-        tv_memo.text = data!!.memo
-
+        tv_memo.text = data!!.desc
     }
 
     companion object {

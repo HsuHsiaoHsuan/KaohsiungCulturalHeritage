@@ -7,6 +7,9 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
+    app:cardCornerRadius="4dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
@@ -25,7 +28,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:textColor="@android:color/white"
-            app:chipBackgroundColor="@color/colorPrimary" />
+            app:chipBackgroundColor="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -46,13 +49,19 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_photo"
-            android:layout_width="136dp"
-            android:layout_height="102dp"
+            android:layout_width="140dp"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             fresco:viewAspectRatio="1.33" />
+        <!--android:layout_width="136dp"-->
+        <!--android:layout_height="102dp"-->
+
+
         <!--android:layout_alignTop="@+id/tv_title"-->
         <!--android:layout_alignBottom="@+id/tv_class"-->
         <!--fresco:viewAspectRatio="1.33"-->

@@ -1,12 +1,14 @@
 package funnybrain.kaohsiungculturalheritage.main
 
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import funnybrain.kaohsiungculturalheritage.ActivityUtils
 import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
 import funnybrain.kaohsiungculturalheritage.data.source.DataRepository
 import funnybrain.kaohsiungculturalheritage.detail.DetailActivity
+import org.jetbrains.anko.find
 import org.jetbrains.anko.setContentView
 import org.jetbrains.anko.startActivity
 
@@ -20,10 +22,13 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.framelayout)
 //        mainUi = SingleFrameLayoutUi()
 //        mainUi.setContentView(this)
+
         SingleFrameLayoutUi().setContentView(this)
-//        setContentView(R.layout.framelayout)
+        setSupportActionBar(find<Toolbar>(R.id.toolbar))
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val f: MainFragment = MainFragment.newInstance()
         f.setPresenter(MainPresenter(DataRepository.getInstance(), f))

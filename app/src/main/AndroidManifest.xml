@@ -22,7 +22,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".detail.DetailActivity"></activity>
+        <activity android:name=".detail.DetailActivity">
+            <!--android:parentActivityName=".main.MainActivity"-->
+            <!--<meta-data-->
+                <!--android:name="android.support.PARENT_ACTIVITY"-->
+                <!--android:value=".main.MainActivity"/>-->
+        </activity>
     </application>
 
 </manifest>

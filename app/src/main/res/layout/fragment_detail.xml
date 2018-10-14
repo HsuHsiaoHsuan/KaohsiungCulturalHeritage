@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:tools="http://schemas.android.com/tools"--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--tools:context=".detail.DetailFragment">-->
 
-<!--&lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;--><!--<TextView--><!--android:layout_width="match_parent"--><!--android:layout_height="match_parent"--><!--android:text="@string/hello_blank_fragment" />-->
-
-<!--</FrameLayout>-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".detail.DetailActivity">
-    <!--android:paddingStart="16dp"-->
-    <!--android:paddingTop="18dp"-->
-    <!--android:paddingEnd="16dp"-->
-    <!--android:paddingBottom="18dp"-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -53,15 +46,9 @@
             android:textColor="@android:color/white"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            app:chipBackgroundColor="@color/colorPrimary"
+            app:chipBackgroundColor="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/uvp_pager" />
-
-        <!--<View-->
-        <!--android:id="@+id/v_seperator_1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="12dp"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/tv_title"/>-->
 
         <TextView
             android:id="@+id/tv_intro"

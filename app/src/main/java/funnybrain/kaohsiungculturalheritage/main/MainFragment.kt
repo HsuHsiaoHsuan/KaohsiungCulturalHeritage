@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
 import funnybrain.kaohsiungculturalheritage.main.adapter.DataItemRecyclerViewAdapter
@@ -28,10 +30,10 @@ class MainFragment : Fragment(), MainContract.View {
 //        recyclerView.adapter =
         recyclerView.adapter?.notifyDataSetChanged()
 
-        Log.e("FREEMAN", "getDataOk")
-        data.forEach {
-            println(it.title)
-        }
+//        Log.e("FREEMAN", "getDataOk")
+//        data.forEach {
+//            println(it.title)
+//        }
     }
 
     override fun getDataFail(msg: String) {
@@ -64,6 +66,9 @@ class MainFragment : Fragment(), MainContract.View {
 
         recyclerView = view.findViewById(R.id.list)
         recyclerView.layoutManager = LinearLayoutManager(context)
+        var dividerItemDecoration = DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(inflater.context, R.drawable.divider_6dp)!!)
+        recyclerView.addItemDecoration(dividerItemDecoration)
 
         return view
     }
