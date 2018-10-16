@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="background">#F3F5F7</color>
+    <color name="background_divider">@android:color/transparent</color>
     <color name="marigold">#ffc107</color>
     <color name="warm_grey">#767676</color>
     <color name="black_87">#de000000</color>

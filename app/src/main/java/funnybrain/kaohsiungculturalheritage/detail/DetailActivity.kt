@@ -3,7 +3,6 @@ package funnybrain.kaohsiungculturalheritage.detail
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.NavUtils
 import funnybrain.kaohsiungculturalheritage.ActivityUtils
 import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
@@ -22,10 +21,11 @@ class DetailActivity : BaseActivity() {
 //        mainUi.setContentView(this)
         SingleFrameLayoutUi().setContentView(this)
         setSupportActionBar(find<Toolbar>(R.id.toolbar))
+        val data = intent.getParcelableExtra<DataItem>(DetailFragment.ARG_DATA)
+
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        val data = intent.getParcelableExtra<DataItem>(DetailFragment.ARG_DATA)
+        supportActionBar?.title = data.title
 
         val f: DetailFragment = DetailFragment.newInstance(data)
         ActivityUtils.addFragmentToActivityWithTag(

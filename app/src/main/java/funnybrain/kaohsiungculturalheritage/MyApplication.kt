@@ -1,13 +1,12 @@
 package funnybrain.kaohsiungculturalheritage
 
-import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import androidx.multidex.MultiDexApplication
+import com.facebook.cache.disk.DiskCacheConfig
+import com.facebook.common.util.ByteConstants
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.core.ImagePipelineConfig
-import com.facebook.common.util.ByteConstants
-import com.facebook.cache.disk.DiskCacheConfig
 
 class MyApplication() : MultiDexApplication() {
 

@@ -10,12 +10,12 @@ import io.reactivex.schedulers.Schedulers
 object DataRequest {
     private val TAG: String = DataRequest.javaClass.simpleName
 
-    private val onErrorComsumer = Consumer<Throwable> {t: Throwable ->
+    private val onErrorComsumer = Consumer<Throwable> { t: Throwable ->
         Log.e(TAG, t.message)
         t.printStackTrace()
     }
 
-    fun<T> performAsyncRequest(observable: Observable<T>, onConsumer: Consumer<in T>, onError: Consumer<Throwable> = onErrorComsumer): Disposable {
+    fun <T> performAsyncRequest(observable: Observable<T>, onConsumer: Consumer<in T>, onError: Consumer<Throwable> = onErrorComsumer): Disposable {
         return observable
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

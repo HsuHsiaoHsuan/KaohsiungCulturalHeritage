@@ -5,30 +5,30 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-data class DataItem (
-    @SerializedName("Heritage_INDEX")
-    @Expose
-    val index: String?,
+data class DataItem(
+        @SerializedName("Heritage_INDEX")
+        @Expose
+        val index: String?,
 
-    @SerializedName("Heritage_title")
-    @Expose
-    val title: String?,
+        @SerializedName("Heritage_title")
+        @Expose
+        val title: String?,
 
-    @SerializedName("Heritage_class")
-    @Expose
-    val type: String?,
+        @SerializedName("Heritage_class")
+        @Expose
+        val type: String?,
 
-    @SerializedName("Heritage_desc")
-    @Expose
-    val desc: String?,
+        @SerializedName("Heritage_desc")
+        @Expose
+        val desc: String?,
 
-    @SerializedName("Heritage_travel")
-    @Expose
-    val memo: String?,
+        @SerializedName("Heritage_travel")
+        @Expose
+        val memo: String?,
 
-    @SerializedName("Heritage_Image")
-    @Expose
-    val image: List<String> = ArrayList()) : Parcelable {
+        @SerializedName("Heritage_Image")
+        @Expose
+        val image: List<String> = ArrayList()) : Parcelable {
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),

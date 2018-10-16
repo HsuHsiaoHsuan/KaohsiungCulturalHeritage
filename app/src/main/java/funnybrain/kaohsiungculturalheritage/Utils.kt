@@ -6,7 +6,7 @@ import org.jetbrains.anko.windowManager
 
 object Utils {
 
-    fun getWindowScreen(context: Context) : Point {
+    fun getWindowScreen(context: Context): Point {
         val point = Point()
         context.windowManager.defaultDisplay.getSize(point)
         return point

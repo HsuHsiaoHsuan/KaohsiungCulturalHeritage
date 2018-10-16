@@ -3,13 +3,13 @@ package funnybrain.kaohsiungculturalheritage.detail
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.updateLayoutParams
+import androidx.fragment.app.Fragment
 import com.tmall.ultraviewpager.UltraViewPager
-
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.Utils
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
@@ -54,8 +54,8 @@ class DetailFragment : Fragment() {
         uvp_pager.initIndicator()
         uvp_pager.indicator
                 .setOrientation(UltraViewPager.Orientation.HORIZONTAL)
-                .setFocusColor(resources.getColor(R.color.colorPrimary))
-                .setNormalColor(resources.getColor(R.color.warm_grey))
+                .setFocusColor(ContextCompat.getColor(context!!, R.color.colorPrimary))
+                .setNormalColor(ContextCompat.getColor(context!!, R.color.warm_grey))
                 .setMargin(0, 0, 0, 35)
                 .setRadius(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4.0f, resources.displayMetrics).toInt())
                 .setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)

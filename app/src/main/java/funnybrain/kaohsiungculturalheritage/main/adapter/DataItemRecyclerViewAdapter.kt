@@ -1,11 +1,12 @@
 package funnybrain.kaohsiungculturalheritage.main.adapter
 
+
 import android.net.Uri
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.drawee.interfaces.DraweeController
 import com.facebook.drawee.view.SimpleDraweeView
@@ -13,10 +14,7 @@ import com.facebook.imagepipeline.request.ImageRequest
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
-
-
 import funnybrain.kaohsiungculturalheritage.main.MainFragment.OnListFragmentInteractionListener
-
 import kotlinx.android.synthetic.main.list_item_main.view.*
 
 class DataItemRecyclerViewAdapter(

@@ -1,13 +1,12 @@
 package funnybrain.kaohsiungculturalheritage.main
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.widget.Toolbar
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
-import org.jetbrains.anko.*
+import org.jetbrains.anko.AnkoComponent
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.include
 
 class SingleFrameLayoutUi : AnkoComponent<BaseActivity> {
 
