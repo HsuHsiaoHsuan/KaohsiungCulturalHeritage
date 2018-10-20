@@ -6,4 +6,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     fresco:viewAspectRatio="1.33"
-    tools:context=".detail.PhotoFragment"/>
+    tools:context=".detail.PhotoFragment" />

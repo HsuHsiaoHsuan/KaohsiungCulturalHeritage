@@ -7,10 +7,10 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="4dp"
-    app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
-    android:foreground="?android:attr/selectableItemBackground">
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -50,11 +50,11 @@
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_photo"
             android:layout_width="140dp"
-            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-
             android:layout_alignParentEnd="true"
+
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             fresco:viewAspectRatio="1.33" />
