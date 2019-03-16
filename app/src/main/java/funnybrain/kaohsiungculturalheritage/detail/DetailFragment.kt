@@ -47,9 +47,9 @@ class DetailFragment : Fragment() {
         uvp_pager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
         uvp_pager.adapter = photoAdapter
 
-        val point = Utils.getWindowScreen(activity!!)
+        val point = Utils.getWindowSize(activity!!)
         uvp_pager.updateLayoutParams {
-            height = (point.x * (3.0f / 4.0f)).toInt()
+            height = (point.widthPixels * (3.0f / 4.0f)).toInt()
         }
         uvp_pager.initIndicator()
         uvp_pager.indicator

@@ -7,6 +7,11 @@ import com.facebook.cache.disk.DiskCacheConfig
 import com.facebook.common.util.ByteConstants
 import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.core.ImagePipelineConfig
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
+import com.orhanobut.logger.Logger.addLogAdapter
+
+
 
 class MyApplication() : MultiDexApplication() {
 
@@ -31,6 +36,8 @@ class MyApplication() : MultiDexApplication() {
                 .build()
 
         Fresco.initialize(this, frescoConfig)
+
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     override fun onLowMemory() {

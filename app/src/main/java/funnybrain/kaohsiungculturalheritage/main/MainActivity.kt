@@ -31,7 +31,7 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val f: MainFragment = MainFragment.newInstance()
-        f.setPresenter(MainPresenter(DataRepository.getInstance(), f))
+        f.setPresenter(MainPresenter(DataRepository, f))
 
         ActivityUtils
                 .addFragmentToActivityWithTag(

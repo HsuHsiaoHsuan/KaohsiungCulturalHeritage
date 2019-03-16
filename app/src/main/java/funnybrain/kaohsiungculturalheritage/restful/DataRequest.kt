@@ -1,6 +1,6 @@
 package funnybrain.kaohsiungculturalheritage.restful
 
-import android.util.Log
+import com.orhanobut.logger.Logger
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -8,10 +8,8 @@ import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 object DataRequest {
-    private val TAG: String = DataRequest.javaClass.simpleName
-
     private val onErrorComsumer = Consumer<Throwable> { t: Throwable ->
-        Log.e(TAG, t.message)
+        Logger.e(t.message.toString())
         t.printStackTrace()
     }
 
