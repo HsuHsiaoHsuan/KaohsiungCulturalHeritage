@@ -1,5 +1,6 @@
 package funnybrain.kaohsiungculturalheritage.main
 
+import android.util.Log
 import funnybrain.kaohsiungculturalheritage.data.source.DataRepository
 import io.reactivex.functions.Consumer
 
@@ -14,6 +15,9 @@ class MainPresenter(
     override fun getData() {
         mDataRepository.getItem(
                 Consumer {
+                    it.forEach {
+                        Log.d("FREEMAN", it.title)
+                    }
                     mMainView.getDataOk(it)
                 },
                 Consumer {

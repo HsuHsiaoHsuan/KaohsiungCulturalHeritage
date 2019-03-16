@@ -42,7 +42,7 @@ class DetailFragment : Fragment() {
         c_type.text = data!!.type
 
         photoData = data!!.image
-        photoAdapter = PhotoAdapter(fragmentManager, photoData)
+        photoAdapter = PhotoAdapter(fragmentManager!!, photoData)
 
         uvp_pager.setScrollMode(UltraViewPager.ScrollMode.HORIZONTAL)
         uvp_pager.adapter = photoAdapter
