@@ -1,5 +1,6 @@
 package funnybrain.kaohsiungculturalheritage.main
 
+import android.content.Context
 import funnybrain.kaohsiungculturalheritage.BasePresenter
 import funnybrain.kaohsiungculturalheritage.BaseView
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
@@ -12,6 +13,6 @@ class MainContract {
     }
 
     interface Presenter : BasePresenter {
-        fun getData()
+        fun getData(context: Context)
     }
 }

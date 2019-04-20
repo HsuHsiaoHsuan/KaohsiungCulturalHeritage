@@ -1,12 +1,11 @@
 package funnybrain.kaohsiungculturalheritage.main
 
 import android.os.Bundle
-import androidx.appcompat.widget.Toolbar
 import funnybrain.kaohsiungculturalheritage.ActivityUtils
 import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
+import funnybrain.kaohsiungculturalheritage.data.Injection
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
-import funnybrain.kaohsiungculturalheritage.data.source.DataRepository
 import funnybrain.kaohsiungculturalheritage.detail.DetailActivity
 import org.jetbrains.anko.find
 import org.jetbrains.anko.setContentView
@@ -14,7 +13,7 @@ import org.jetbrains.anko.startActivity
 
 class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListener {
     override fun onListFragmentInteraction(item: DataItem?) {
-        println(item!!.title)
+//        println(item!!.title)
         startActivity<DetailActivity>("DATA" to item)
     }
 
@@ -27,11 +26,11 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
 //        mainUi.setContentView(this)
 
         SingleFrameLayoutUi().setContentView(this)
-        setSupportActionBar(find<Toolbar>(R.id.toolbar))
+        setSupportActionBar(find(R.id.toolbar))
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val f: MainFragment = MainFragment.newInstance()
-        f.setPresenter(MainPresenter(DataRepository, f))
+        f.setPresenter(MainPresenter(Injection.provideDataRepository(this), f))
 
         ActivityUtils
                 .addFragmentToActivityWithTag(
@@ -39,11 +38,5 @@ class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListe
                         fragment = f,
                         frameId = R.id.main_view,
                         tag = "MainFragment")
-
-//        DataRepository.getInstance().getItem(Consumer {
-//            it.forEach {
-//                println(it.title)
-//            }
-//        })
     }
 }

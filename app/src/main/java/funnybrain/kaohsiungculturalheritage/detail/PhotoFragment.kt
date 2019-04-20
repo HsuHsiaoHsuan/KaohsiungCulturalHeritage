@@ -11,6 +11,8 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.facebook.imagepipeline.request.ImageRequestBuilder
 import funnybrain.kaohsiungculturalheritage.R
 import kotlinx.android.synthetic.main.fragment_photo.*
+import org.jetbrains.anko.include
+import org.jetbrains.anko.support.v4.UI
 
 private const val PIC_URL = "param1"
 
@@ -26,7 +28,9 @@ class PhotoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_photo, container, false)
+        return UI {
+            include<View>(R.layout.fragment_photo)
+        }.view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
