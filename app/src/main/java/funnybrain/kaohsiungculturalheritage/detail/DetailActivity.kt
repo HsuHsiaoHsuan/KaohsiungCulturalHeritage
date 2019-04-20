@@ -2,7 +2,6 @@ package funnybrain.kaohsiungculturalheritage.detail
 
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
 import funnybrain.kaohsiungculturalheritage.ActivityUtils
 import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
@@ -20,7 +19,7 @@ class DetailActivity : BaseActivity() {
 //        mainUi = SingleFrameLayoutUi()
 //        mainUi.setContentView(this)
         SingleFrameLayoutUi().setContentView(this)
-        setSupportActionBar(find<Toolbar>(R.id.toolbar))
+        setSupportActionBar(find(R.id.toolbar))
         val data = intent.getParcelableExtra<DataItem>(DetailFragment.ARG_DATA)
 
         supportActionBar?.setHomeButtonEnabled(true)
@@ -33,8 +32,6 @@ class DetailActivity : BaseActivity() {
                 fragment = f,
                 frameId = R.id.main_view,
                 tag = "DetailFragment")
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
