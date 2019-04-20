@@ -1,24 +1,32 @@
 package funnybrain.kaohsiungculturalheritage.data.source
 
+import android.content.Context
+import androidx.annotation.VisibleForTesting
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
-import funnybrain.kaohsiungculturalheritage.restful.DataRequest
-import funnybrain.kaohsiungculturalheritage.restful.RestfulApiBuilder
-import funnybrain.kaohsiungculturalheritage.restful.RestfulApiService
 import io.reactivex.functions.Consumer
 
-class DataRepository {
-    private val api: RestfulApiService = RestfulApiBuilder.buildRestfulService()
+class DataRepository (
+        val remoteDataSource: DataSource,
+        val localDataSource: DataSource, val context: Context) : DataSource {
+
+    override fun getData(context: Context, callback: Consumer<List<DataItem>>, error: Consumer<Throwable>) {
+//        remoteDataSource.getData(context, callback, error)
+        localDataSource.getData(context, callback, error)
+    }
 
     companion object {
         private var INSTANCE: DataRepository? = null
 
-        fun getInstance(): DataRepository =
-                INSTANCE ?: synchronized(this) {
-                    DataRepository()
-                }
-    }
+        @JvmStatic
+        fun getInstance(remoteDataSource: DataSource, localDataSource: DataSource, context: Context): DataRepository {
+            return INSTANCE ?: DataRepository(remoteDataSource, localDataSource, context.applicationContext).apply {
+                INSTANCE = this
+            }
+        }
 
-    fun getItem(callback: Consumer<List<DataItem>>, error: Consumer<Throwable>) {
-        DataRequest.performAsyncRequest(api.getData(), callback, error)
+        @VisibleForTesting
+        fun destroyInstance() {
+            INSTANCE = null
+        }
     }
 }

@@ -1,30 +1,36 @@
 package funnybrain.kaohsiungculturalheritage.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import funnybrain.kaohsiungculturalheritage.ActivityUtils
+import funnybrain.kaohsiungculturalheritage.BaseActivity
 import funnybrain.kaohsiungculturalheritage.R
-import funnybrain.kaohsiungculturalheritage.data.source.DataRepository
-import funnybrain.kaohsiungculturalheritage.main.dummy.DummyContent
-import io.reactivex.functions.Consumer
+import funnybrain.kaohsiungculturalheritage.data.Injection
+import funnybrain.kaohsiungculturalheritage.data.model.DataItem
+import funnybrain.kaohsiungculturalheritage.detail.DetailActivity
 import org.jetbrains.anko.find
 import org.jetbrains.anko.setContentView
+import org.jetbrains.anko.startActivity
 
-class MainActivity : AppCompatActivity(), MainFragment.OnListFragmentInteractionListener {
-
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
+class MainActivity : BaseActivity(), MainFragment.OnListFragmentInteractionListener {
+    override fun onListFragmentInteraction(item: DataItem?) {
+//        println(item!!.title)
+        startActivity<DetailActivity>("DATA" to item)
     }
 
-    lateinit var mainUi: MainActivityUi
+//    lateinit var mainUi: SingleFrameLayoutUi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainUi = MainActivityUi()
-        mainUi.setContentView(this)
+//        setContentView(R.layout.framelayout)
+//        mainUi = SingleFrameLayoutUi()
+//        mainUi.setContentView(this)
+
+        SingleFrameLayoutUi().setContentView(this)
+        setSupportActionBar(find(R.id.toolbar))
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         val f: MainFragment = MainFragment.newInstance()
-        f.setPresenter(MainPresenter(DataRepository.getInstance(), f))
+        f.setPresenter(MainPresenter(Injection.provideDataRepository(this), f))
 
         ActivityUtils
                 .addFragmentToActivityWithTag(
@@ -32,11 +38,5 @@ class MainActivity : AppCompatActivity(), MainFragment.OnListFragmentInteraction
                         fragment = f,
                         frameId = R.id.main_view,
                         tag = "MainFragment")
-
-//        DataRepository.getInstance().getItem(Consumer {
-//            it.forEach {
-//                println(it.title)
-//            }
-//        })
     }
 }

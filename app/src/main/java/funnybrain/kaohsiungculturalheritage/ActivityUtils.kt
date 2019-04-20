@@ -11,7 +11,6 @@ object ActivityUtils {
             frameId: Int,
             tag: String) {
 
-
         fragmentManager
                 .beginTransaction()
                 .add(frameId, fragment, tag)

@@ -1,21 +1,24 @@
 package funnybrain.kaohsiungculturalheritage.main.adapter
 
-import androidx.recyclerview.widget.RecyclerView
+
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.facebook.drawee.backends.pipeline.Fresco
+import com.facebook.drawee.interfaces.DraweeController
+import com.facebook.drawee.view.SimpleDraweeView
+import com.facebook.imagepipeline.request.ImageRequest
+import com.facebook.imagepipeline.request.ImageRequestBuilder
 import funnybrain.kaohsiungculturalheritage.R
 import funnybrain.kaohsiungculturalheritage.data.model.DataItem
-
-
 import funnybrain.kaohsiungculturalheritage.main.MainFragment.OnListFragmentInteractionListener
-import funnybrain.kaohsiungculturalheritage.main.dummy.DummyContent.DummyItem
-
 import kotlinx.android.synthetic.main.list_item_main.view.*
 
 class DataItemRecyclerViewAdapter(
-        private val mValues: List<DataItem>,
+        private val mValues: MutableList<DataItem>,
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<DataItemRecyclerViewAdapter.ViewHolder>() {
 
@@ -39,8 +42,18 @@ class DataItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.index
-        holder.mContentView.text = item.title
+        holder.mTvTitle.text = item.title
+        holder.mTvType.text = item.type
+        val request: ImageRequest = ImageRequestBuilder
+                .newBuilderWithSource(Uri.parse(item.image[0]))
+                .disableDiskCache()
+                .setProgressiveRenderingEnabled(true)
+                .build()
+        val controller: DraweeController = Fresco.newDraweeControllerBuilder()
+                .setImageRequest(request)
+                .setOldController(holder.mImage.controller)
+                .build()
+        holder.mImage.controller = controller
 
         with(holder.mView) {
             tag = item
@@ -51,11 +64,12 @@ class DataItemRecyclerViewAdapter(
     override fun getItemCount(): Int = mValues.size
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val mIdView: TextView = mView.item_number
-        val mContentView: TextView = mView.content
+        val mTvTitle: TextView = mView.tv_title
+        val mTvType: TextView = mView.c_type
+        val mImage: SimpleDraweeView = mView.iv_photo
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.text + "'"
+            return super.toString() + " '" + mTvType.text + "'"
         }
     }
 }
