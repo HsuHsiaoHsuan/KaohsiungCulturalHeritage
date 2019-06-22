@@ -5,7 +5,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import funnybrain.kaohsiungculturalheritage.detail.PhotoFragment
 
-class PhotoAdapter(fm: FragmentManager, photoList: List<String>) : FragmentStatePagerAdapter(fm) {
+class PhotoAdapter(fm: FragmentManager, photoList: List<String>)
+    : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     var data = photoList
 
