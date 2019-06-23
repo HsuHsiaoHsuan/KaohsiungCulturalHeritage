@@ -31,7 +31,6 @@ class MainFragment : Fragment(), MainContract.View {
         dataList.clear()
         dataList.addAll(data)
         rv_list.adapter!!.notifyDataSetChanged()
-        Logger.e("HIHI")
     }
 
     override fun getDataFail(msg: String) {

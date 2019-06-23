@@ -28,6 +28,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    dexOptions {
+        preDexLibraries = false
+    }
     packagingOptions {
         pickFirst("META-INF/DEPENDENCIES")
         pickFirst("META-INF/LICENSE")
@@ -43,6 +46,7 @@ android {
 
 dependencies {
     val ankoVer = "0.10.8"
+    val junitVer = "5.4.2"
 //    val kotlinVer = project.rootProject.ext["kotlin_version"]
     val kotlinVer = project.rootProject.extra.get("kotlin_version")
 
@@ -88,10 +92,19 @@ dependencies {
     implementation("org.jetbrains.anko:anko-recyclerview-v7:$ankoVer")
     implementation("org.jetbrains.anko:anko-recyclerview-v7-coroutines:$ankoVer")
     implementation("org.jetbrains.anko:anko-sdk27:$ankoVer") // sdk15, sdk19, sdk21, sdk23, sdk25 are also available
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVer")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVer")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.0")
 
-    testImplementation("junit:junit:4.13-beta-2")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-api:$junitVer")
+    androidTestImplementation("org.junit.jupiter:junit-jupiter-params:$junitVer")
+    androidTestRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVer")
+    androidTestImplementation("io.mockk:mockk:1.9")
+    androidTestImplementation("com.squareup.retrofit2:retrofit-mock:2.2.0")
+
+    androidTestImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVer")
+    androidTestImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVer")
+    androidTestImplementation("com.squareup.okhttp3:mockwebserver:3.14.2")
+
     androidTestImplementation("androidx.test:runner:1.3.0-alpha01")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0-alpha01")
 }
